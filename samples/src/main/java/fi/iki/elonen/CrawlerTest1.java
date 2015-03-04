@@ -23,13 +23,14 @@ public class CrawlerTest1 extends NanoHTTPD {
         SecureRandom random = new SecureRandom();
         String randomizer = new BigInteger(130, random).toString(32);
 
-        String msg = "<html><body><h1>Crawler Test1 - " + randomizer + "</h1>\n";
+
+        String msg = "<html><body><h1>Crawler Test1 - </h1>\n";
+
         Map<String, String> parms = session.getParms();
         if (parms.get("generation") == null) {
             msg +=
-                    "<a href=\"/" + randomizer + "?generation=1&rand=" + randomizer + "\">" + "Generation " + generation + "</a>";
-            msg += "<br>";
-            msg += "<a href=\"/" + randomizer + "?generation=1&rand=" + randomizer + "\">" + "Generation " + generation + "</a>";
+                    "<a href=\"/?generation=1\">" + "Generation " + generation + "</a>";
+
         } else {
             generation = Integer.parseInt(parms.get("generation"));
             System.out.println(generation);
@@ -50,14 +51,21 @@ public class CrawlerTest1 extends NanoHTTPD {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        Response resp = new NanoHTTPD.Response(msg);
 
         //Last-Modified:Sun, 22 Feb 2015 13:34:37 GMT
         //Server:Jetty(9.1.4.v20140401)
-        Response resp=new NanoHTTPD.Response(msg);
-        resp.addHeader("Last-Modified","Sun, 22 Feb 2015 13:34:37 GMT");
-        resp.addHeader("Server","Jetty(9.1.4.v20140401)");
+        if (parms.get("generation") == null) {
+            //resp.addHeader("Set-Cookie", "JSESSIONID=" + randomizer);
+            session.getCookies().set("JSESSIONID",randomizer,10000);
+        }
+
+
+        resp.addHeader("Last-Modified", "Sun, 22 Feb 2015 13:34:37 GMT");
+        resp.addHeader("Server", "Jetty(9.1.4.v20140401)");
         resp.setChunkedTransfer(false);
-        return resp ;
+
+        return resp;
     }
 
 
