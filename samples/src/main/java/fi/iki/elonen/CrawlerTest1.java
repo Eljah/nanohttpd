@@ -22,14 +22,14 @@ public class CrawlerTest1 extends NanoHTTPD {
         Map<String, String> parms = session.getParms();
         if (parms.get("generation") == null)
             msg +=
-                    "<a href='?generation=1'>" + "Generation " + generation + "</a>";
+                    "<a href='a?generation=1'>" + "Generation " + generation + "</a>";
         else {
             generation = Integer.parseInt(parms.get("generation"));
             System.out.println(generation);
             if (generation < 5) {
-                msg += (new Date()).toString() + ": <a href='?generation=" + (generation + 1) + "'>" + "Generation " + (generation) + "</a>";
+                msg += (new Date()).toString() + ": <a href='a?generation=" + (generation + 1) + "'>" + "Generation " + (generation) + "</a>";
             } else {
-                msg += (new Date()).toString() + ": <a href='?generation=" + (generation) + "'>" + "Generation " + (generation) + "</a>";
+                msg += (new Date()).toString() + ": <a href='a?generation=" + (generation) + "'>" + "Generation " + (generation) + "</a>";
             }
 
 
