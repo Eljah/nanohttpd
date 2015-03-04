@@ -50,7 +50,14 @@ public class CrawlerTest1 extends NanoHTTPD {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return new NanoHTTPD.Response(msg);
+
+        //Last-Modified:Sun, 22 Feb 2015 13:34:37 GMT
+        //Server:Jetty(9.1.4.v20140401)
+        Response resp=new NanoHTTPD.Response(msg);
+        resp.addHeader("Last-Modified","Sun, 22 Feb 2015 13:34:37 GMT");
+        resp.addHeader("Server","Jetty(9.1.4.v20140401)");
+        resp.setChunkedTransfer(false);
+        return resp ;
     }
 
 
