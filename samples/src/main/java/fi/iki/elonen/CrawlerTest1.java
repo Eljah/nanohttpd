@@ -37,7 +37,7 @@ public class CrawlerTest1 extends NanoHTTPD {
         msg += "</body></html>\n";
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(30);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
