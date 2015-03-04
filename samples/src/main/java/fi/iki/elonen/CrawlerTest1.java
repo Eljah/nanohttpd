@@ -1,5 +1,7 @@
 package fi.iki.elonen;
 
+import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.util.Date;
 import java.util.Map;
 
@@ -18,16 +20,23 @@ public class CrawlerTest1 extends NanoHTTPD {
         String uri = session.getUri();
         System.out.println(method + " '" + uri + "' ");
 
-        String msg = "<html><body><h1>Crawler Test1</h1>\n";
+        SecureRandom random = new SecureRandom();
+        String randomizer = new BigInteger(130, random).toString(32);
+
+        String msg = "<html><body><h1>Crawler Test1 - " + randomizer + "</h1>\n";
         Map<String, String> parms = session.getParms();
-        if (parms.get("generation") == null)
+        if (parms.get("generation") == null) {
             msg +=
-                    "<a href='a?generation=1'>" + "Generation " + generation + "</a>";
-        else {
+                    "<a href='a?generation=1&rand=" + randomizer + "'>" + "Generation " + generation + "</a>";
+            msg += "<br>";
+            msg += "<a href='a?generation=1&rand=" + randomizer + "'>" + "Generation " + generation + "</a>";
+        } else {
             generation = Integer.parseInt(parms.get("generation"));
             System.out.println(generation);
             if (generation < 5) {
-                msg += (new Date()).toString() + ": <a href='a?generation=" + (generation + 1) + "'>" + "Generation " + (generation) + "</a>";
+                msg += (new Date()).toString() + ": <a href='a?generation=" + (generation + 1) + "&rand=" + randomizer + "'>" + "Generation " + (generation) + "</a>";
+                msg += "<br>";
+                msg += (new Date()).toString() + ": <a href='a?generation=" + (generation + 1) + "&rand=" + randomizer + "'>" + "Generation " + (generation) + "</a>";
             } else {
                 msg += (new Date()).toString() + ": <a href='a?generation=" + (generation) + "'>" + "Generation " + (generation) + "</a>";
             }
