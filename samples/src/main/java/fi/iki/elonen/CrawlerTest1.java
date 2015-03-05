@@ -36,13 +36,20 @@ public class CrawlerTest1 extends NanoHTTPD {
                 "    <meta name=\"description\" content=\"\">\n" +
                 "    <meta name=\"author\" content=\"\">\n" +
                 "    <title>Сайт о веломаршрутах Татарстана и окрестностей Казани</title><!-- Bootstrap Core CSS -->\n" +
-                "    <link class=\"\" href=\"/favicon.ico\" rel=\"shortcut icon\" type=\"image/x-icon\">\n" +
-                "    <link href=\"/?generation=1\" rel=\"stylesheet\"><!-- Custom CSS -->\n" +
-                "    <link href=\"/?generation=1\" rel=\"stylesheet\"><!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries --><!-- WARNING: Respond.js doesn't work if you view the page via file:// --><!--[if lt IE 9]>\n" +
+                "    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css\">\n<link class=\"\" href=\"/favicon.ico\" rel=\"shortcut icon\" type=\"image/x-icon\">\n" +
                 "        <script src=\"https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js\"></script>\n" +
                 "        <script src=\"https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js\"></script>\n" +
                 "    <![endif]-->\n" +
-                "  </head><body><h1>Crawler Test1 - </h1>\n";
+                "  </head><body><h1>Crawler Test1 - </h1> <body style=\"padding: 20px\"><!-- Navigation -->\n" +
+                "    <nav class=\"navbar navbar-inverse\" role=\"navigation\">\n" +
+                "      <div class=\"container\"><!-- Brand and toggle get grouped for better mobile display -->\n" +
+                "        <div class=\"navbar-header\">\n" +
+                "          <button class=\"navbar-toggle\" type=\"button\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\"><span class=\"sr-only\">Toggle navigation</span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span></button><a class=\"navbar-brand\" href=\"index\">Главная</a>\n" +
+                "        </div><!-- Collect the nav links, forms, and other content for toggling -->\n" +
+                "      </div><!-- /.container -->\n" +
+                "    </nav><!-- Page Content -->\n" +
+                "    <div class=\"container\">\n" +
+                "      <div>\n";
 
 
         Map<String, String> parms = session.getParms();
@@ -63,7 +70,7 @@ public class CrawlerTest1 extends NanoHTTPD {
 
 
         }
-        msg += "</body></html>\n";
+        msg += "</div></div></body></html>\n";
 
         try {
             Thread.sleep(30);
