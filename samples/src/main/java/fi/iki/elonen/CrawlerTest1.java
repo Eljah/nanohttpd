@@ -2,6 +2,7 @@ package fi.iki.elonen;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
 
@@ -9,6 +10,8 @@ import java.util.Map;
  * Created by Ilya Evlampiev on 05.03.2015.
  */
 public class CrawlerTest1 extends NanoHTTPD {
+    static ArrayList<String> alreadyAsked=new ArrayList<String>();
+
     public CrawlerTest1() {
         super(8181);
     }
@@ -25,6 +28,7 @@ public class CrawlerTest1 extends NanoHTTPD {
 
 
         String msg = "<html><body><h1>Crawler Test1 - </h1>\n";
+
 
         Map<String, String> parms = session.getParms();
         if (parms.get("generation") == null) {
@@ -64,6 +68,19 @@ public class CrawlerTest1 extends NanoHTTPD {
         resp.addHeader("Last-Modified", "Sun, 22 Feb 2015 13:34:37 GMT");
         resp.addHeader("Server", "Jetty(9.1.4.v20140401)");
         resp.setChunkedTransfer(false);
+
+        if (alreadyAsked.contains(session.getUri().toString()))
+        {
+           resp.setStatus(Response.Status.NOT_MODIFIED);
+            System.out.println("Already asked URI "+session.getUri().toString());
+        }
+        else
+        {
+            alreadyAsked.add(session.getUri().toString());
+            System.out.println("First time asked URI "+session.getUri().toString());
+
+        }
+
 
         return resp;
     }
