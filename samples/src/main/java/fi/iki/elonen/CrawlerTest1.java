@@ -89,8 +89,13 @@ public class CrawlerTest1 extends NanoHTTPD {
 
         resp.addHeader("Last-Modified", "Sun, 22 Feb 2015 13:34:37 GMT");
         resp.addHeader("Server", "Jetty(9.1.4.v20140401)");
-        resp.addHeader("Cache-Control","tno-cache, must-revalidate, proxy-revalidate");
+        resp.addHeader("Cache-Control","no-cache, must-revalidate, proxy-revalidate");
         resp.setChunkedTransfer(false);
+
+        for (Map.Entry<String, String> entry : session.getHeaders().entrySet())
+        {
+            System.out.println(entry.getKey() + "/" + entry.getValue());
+        }
 
         if (alreadyAsked.contains(session.getUri().toString())) {
             //resp.setStatus(Response.Status.NOT_MODIFIED);
