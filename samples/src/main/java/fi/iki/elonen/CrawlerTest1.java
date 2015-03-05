@@ -27,7 +27,22 @@ public class CrawlerTest1 extends NanoHTTPD {
         String randomizer = new BigInteger(130, random).toString(32);
 
 
-        String msg = "<html><body><h1>Crawler Test1 - </h1>\n";
+        String msg = "<!DOCTYPE html>\n" +
+                "<html lang=\"en\">\n" +
+                "  <head>\n" +
+                "    <meta charset=\"utf-8\">\n" +
+                "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
+                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
+                "    <meta name=\"description\" content=\"\">\n" +
+                "    <meta name=\"author\" content=\"\">\n" +
+                "    <title>Сайт о веломаршрутах Татарстана и окрестностей Казани</title><!-- Bootstrap Core CSS -->\n" +
+                "    <link class=\"\" href=\"/favicon.ico\" rel=\"shortcut icon\" type=\"image/x-icon\">\n" +
+                "    <link href=\"/css/bootstrap.min.css?1\" rel=\"stylesheet\"><!-- Custom CSS -->\n" +
+                "    <link href=\"/css/blog-post.css?1\" rel=\"stylesheet\"><!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries --><!-- WARNING: Respond.js doesn't work if you view the page via file:// --><!--[if lt IE 9]>\n" +
+                "        <script src=\"https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js\"></script>\n" +
+                "        <script src=\"https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js\"></script>\n" +
+                "    <![endif]-->\n" +
+                "  </head><body><h1>Crawler Test1 - </h1>\n";
 
 
         Map<String, String> parms = session.getParms();
