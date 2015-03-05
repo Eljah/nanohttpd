@@ -10,7 +10,7 @@ import java.util.Map;
  * Created by Ilya Evlampiev on 05.03.2015.
  */
 public class CrawlerTest1 extends NanoHTTPD {
-    static ArrayList<String> alreadyAsked=new ArrayList<String>();
+    static ArrayList<String> alreadyAsked = new ArrayList<String>();
 
     public CrawlerTest1() {
         super(8181);
@@ -76,7 +76,7 @@ public class CrawlerTest1 extends NanoHTTPD {
         //Server:Jetty(9.1.4.v20140401)
         if (parms.get("generation") == null) {
             //resp.addHeader("Set-Cookie", "JSESSIONID=" + randomizer);
-            session.getCookies().set("JSESSIONID",randomizer,10000);
+            session.getCookies().set("JSESSIONID", randomizer, 10000);
         }
 
 
@@ -84,16 +84,14 @@ public class CrawlerTest1 extends NanoHTTPD {
         resp.addHeader("Server", "Jetty(9.1.4.v20140401)");
         resp.setChunkedTransfer(false);
 
-        if (alreadyAsked.contains(session.getUri().toString()))
-        {
-           resp.setStatus(Response.Status.NOT_MODIFIED);
-            System.out.println("Already asked URI "+session.getUri().toString());
-        }
-        else
-        {
-            alreadyAsked.add(session.getUri().toString());
-            System.out.println("First time asked URI "+session.getUri().toString());
-
+        if (alreadyAsked.contains(session.getUri().toString())) {
+            resp.setStatus(Response.Status.NOT_MODIFIED);
+            System.out.println("Already asked URI " + session.getUri().toString());
+        } else {
+            if (!session.getMethod().equals(Method.HEAD)) {
+                alreadyAsked.add(session.getUri().toString());
+                System.out.println("First time asked URI " + session.getUri().toString());
+            }
         }
 
 
