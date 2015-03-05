@@ -85,7 +85,7 @@ public class CrawlerTest1 extends NanoHTTPD {
         resp.setChunkedTransfer(false);
 
         if (alreadyAsked.contains(session.getUri().toString())) {
-            resp.setStatus(Response.Status.NOT_MODIFIED);
+            //resp.setStatus(Response.Status.NOT_MODIFIED);
             System.out.println("Already asked URI " + session.getUri().toString());
         } else {
             if (!session.getMethod().equals(Method.HEAD)) {
