@@ -37,8 +37,8 @@ public class CrawlerTest1 extends NanoHTTPD {
                 "    <meta name=\"author\" content=\"\">\n" +
                 "    <title>Сайт о веломаршрутах Татарстана и окрестностей Казани</title><!-- Bootstrap Core CSS -->\n" +
                 "    <link class=\"\" href=\"/favicon.ico\" rel=\"shortcut icon\" type=\"image/x-icon\">\n" +
-                "    <link href=\"/css/bootstrap.min.css?1\" rel=\"stylesheet\"><!-- Custom CSS -->\n" +
-                "    <link href=\"/css/blog-post.css?1\" rel=\"stylesheet\"><!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries --><!-- WARNING: Respond.js doesn't work if you view the page via file:// --><!--[if lt IE 9]>\n" +
+                "    <link href=\"/?generation=1\" rel=\"stylesheet\"><!-- Custom CSS -->\n" +
+                "    <link href=\"/?generation=1\" rel=\"stylesheet\"><!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries --><!-- WARNING: Respond.js doesn't work if you view the page via file:// --><!--[if lt IE 9]>\n" +
                 "        <script src=\"https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js\"></script>\n" +
                 "        <script src=\"https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js\"></script>\n" +
                 "    <![endif]-->\n" +
@@ -48,7 +48,7 @@ public class CrawlerTest1 extends NanoHTTPD {
         Map<String, String> parms = session.getParms();
         if (parms.get("generation") == null) {
             msg +=
-                    "<a href=\"/?generation=1\">" + "Generation " + generation + "</a>";
+                    "<a href=\"/b?generation=1\">" + "Generation " + generation + "</a>";
 
         } else {
             generation = Integer.parseInt(parms.get("generation"));
@@ -82,6 +82,7 @@ public class CrawlerTest1 extends NanoHTTPD {
 
         resp.addHeader("Last-Modified", "Sun, 22 Feb 2015 13:34:37 GMT");
         resp.addHeader("Server", "Jetty(9.1.4.v20140401)");
+        resp.addHeader("Cache-Control","tno-cache, must-revalidate, proxy-revalidate");
         resp.setChunkedTransfer(false);
 
         if (alreadyAsked.contains(session.getUri().toString())) {
