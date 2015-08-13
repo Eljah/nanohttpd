@@ -56,6 +56,11 @@ public class CrawlerTest1 extends NanoHTTPD {
                     is = fis;
                     System.out.println("Requesting /favicon2.ico");
                     //fis.close();     //todo comment it; doesn't respond http correctly with this line
+                    try {
+                        Thread.sleep(120000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     Response resp = new Response(Response.Status.OK, "image/png", is);
                     return resp;
                 } catch (FileNotFoundException e) {
