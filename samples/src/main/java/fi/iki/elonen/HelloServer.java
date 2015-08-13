@@ -1,5 +1,9 @@
 package fi.iki.elonen;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Map;
 
 /**
@@ -13,6 +17,28 @@ public class HelloServer extends NanoHTTPD {
     @Override public Response serve(IHTTPSession session) {
         Method method = session.getMethod();
         String uri = session.getUri();
+
+        if (uri.equals("/favicon.ico"))
+        {
+            InputStream is;
+
+            try {
+                is = new FileInputStream("favicon.ico");
+                System.out.println("Requesting /favicon.ico");
+                is.close();
+                Response resp=new Response(Response.Status.OK,"",is);
+                return resp;
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+
+        }
+
         System.out.println(method + " '" + uri + "' ");
 
         String msg = "<html><body><h1>Hello server</h1>\n";
