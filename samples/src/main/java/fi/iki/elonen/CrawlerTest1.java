@@ -31,7 +31,7 @@ public class CrawlerTest1 extends NanoHTTPD {
             InputStream is;
 
             try {
-                FileInputStream fis = new FileInputStream("favicon.ico");
+                FileInputStream fis = new FileInputStream(uri.replace("/",""));
                 is=fis;
                 System.out.println("Requesting /favicon.ico");
                 //fis.close();     //todo comment it; doesn't respond http correctly with this line
