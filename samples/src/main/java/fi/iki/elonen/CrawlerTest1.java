@@ -34,7 +34,7 @@ public class CrawlerTest1 extends NanoHTTPD {
                 FileInputStream fis = new FileInputStream("favicon.ico");
                 is=fis;
                 System.out.println("Requesting /favicon.ico");
-                //fis.close();
+                fis.close();     //todo comment it; doesn't respond http correctly with this line
                 Response resp = new Response(Response.Status.OK, "image/png", is);
                 return resp;
             } catch (FileNotFoundException e) {
