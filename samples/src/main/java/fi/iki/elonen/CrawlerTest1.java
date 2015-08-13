@@ -27,15 +27,15 @@ public class CrawlerTest1 extends NanoHTTPD {
         String uri = session.getUri();
         System.out.println(method + " '" + uri + "' ");
 
-        if (uri.equals("/favicon.ico")) {
+        if (uri.equals("/favicon.ico")||uri.equals("/favicon2.ico")) {
             InputStream is;
 
             try {
                 FileInputStream fis = new FileInputStream("favicon.ico");
                 is=fis;
                 System.out.println("Requesting /favicon.ico");
-                fis.close();     //todo comment it; doesn't respond http correctly with this line
-                Response resp = new Response(Response.Status.OK, "image/png", is);
+                //fis.close();     //todo comment it; doesn't respond http correctly with this line
+                Response resp = new Response(Response.Status.NOT_FOUND, "image/png", is);
                 return resp;
             } catch (FileNotFoundException e) {
                 // TODO Auto-generated catch block
@@ -55,6 +55,7 @@ public class CrawlerTest1 extends NanoHTTPD {
 
             String msg = "<!DOCTYPE html>\n" +
                     "<html lang=\"en\">\n" +
+                    "<link rel=\"icon\" type=\"image/png\" href=\"/favicon2.ico\" />\n"+
                     "  <head>\n" +
                     "    <meta charset=\"utf-8\">\n" +
                     "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
