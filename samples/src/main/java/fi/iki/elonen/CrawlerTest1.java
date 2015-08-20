@@ -39,7 +39,7 @@ public class CrawlerTest1 extends NanoHTTPD {
                     //fis.close();     //todo comment it; doesn't respond http correctly with this line
                     //Response resp = new Response(Response.Status.NOT_FOUND, MIME_HTML, "Not fount");
                     Response resp = new Response(Response.Status.OK, MIME_HTML, "Not fount");
-                    resp.addHeader("Location","http://img06.blogcu.com/v2/images/orj/b/i/r/birturkbilgesi/birturkbilgesi_1396779218152.jpg");
+                    //resp.addHeader("Location","http://img06.blogcu.com/v2/images/orj/b/i/r/birturkbilgesi/birturkbilgesi_1396779218152.jpg");
                     return resp;
                 } catch (FileNotFoundException e) {
                     // TODO Auto-generated catch block
