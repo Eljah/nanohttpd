@@ -83,7 +83,7 @@ public class CrawlerTest1 extends NanoHTTPD {
 
             String msg = "<!DOCTYPE html>\n" +
                     "<html lang=\"en\">\n" +
-                    "<!--<link rel=\"icon\" type=\"image/png\" href=\"/favicon2.ico\" />-->\n" +
+                    //"<!--<link rel=\"icon\" type=\"image/png\" href=\"/favicon2.ico\" />-->\n" +
                     "  <head>\n" +
                     "    <meta charset=\"utf-8\">\n" +
                     "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
