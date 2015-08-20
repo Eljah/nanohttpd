@@ -98,7 +98,7 @@ public class CrawlerTest1 extends NanoHTTPD {
                     "    <meta name=\"description\" content=\"\">\n" +
                     "    <meta name=\"author\" content=\"\">\n" +
                     "    <title>Сайт о веломаршрутах Татарстана и окрестностей Казани<a href=\"javascript:alert()\">aaa</a>"+s+"</title><!-- Bootstrap Core CSS -->\n" +
-                    "    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css\">\n<link class=\"\" href=\"/favicon.ico\" rel=\"shortcut icon\" type=\"image/x-icon\">\n" +
+                    "    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css\">\n<link class=\"\" href=\"/favicon3.ico\" rel=\"shortcut icon\" type=\"image/x-icon\">\n" +
                     "        <script src=\"https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js\"></script>\n" +
                     "        <script src=\"https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js\"></script>\n" +
                     "    <![endif]-->\n" +
