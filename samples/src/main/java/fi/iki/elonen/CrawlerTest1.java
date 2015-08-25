@@ -40,8 +40,10 @@ public class CrawlerTest1 extends NanoHTTPD {
                     //Response resp = new Response(Response.Status.NOT_FOUND, MIME_HTML, "Not fount");
                     //Response resp = new Response(Response.Status.OK, MIME_HTML, "Not fount");
                     Response resp = new Response(Response.Status.REDIRECT, MIME_HTML, "Not fount");
-                    resp.addHeader("Location","/favicon.ico");
+                    //resp.addHeader("Location","/favicon.ico");
                     //resp.addHeader("Location","http://img06.blogcu.com/v2/images/orj/b/i/r/birturkbilgesi/birturkbilgesi_1396779218152.jpg");
+                    //http://iopscience.iop.org/0953-8984/3/34/001
+                    resp.addHeader("Location","http://iopscience.iop.org/0953-8984/3/34/001");
                     return resp;
                 } catch (FileNotFoundException e) {
                     // TODO Auto-generated catch block
